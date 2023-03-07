@@ -39,6 +39,8 @@ def create_recipe_table(session, recipes):
             print(f'|{recipe.id}{" " * id_spaces}|{recipe.name}{" " * name_spaces}|')
     print('-' * 50)
 
+    choose_recipe(session)
+
 
 def add_ingredient(session):
     ingredient_item_id = input('Please enter in an ingredient ID: ')
@@ -56,5 +58,9 @@ def add_ingredient(session):
                 create_recipe_table(session, recipes)
 
 
-
-
+def choose_recipe(session):
+    recipe_item_id = input('Please enter in a recipe ID: ')
+    recipes = session.query(Recipe)
+    for recipe in recipes:
+        if recipe.id == int(recipe_item_id):
+            print(recipe.name)
