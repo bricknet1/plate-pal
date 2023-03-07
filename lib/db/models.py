@@ -47,6 +47,6 @@ class RecipeIngredient(Base):
     def __repr__(self):
         return f'id: {self.id}, ' + \
             f'quantity: {self.quantity}, ' + \
-            f'unit: {self.unit}), ' + \
+            f'unit: {self.unit}, ' + \
             f'recipe_id: {self.recipe_id}, ' + \
             f'ingredient_id: {self.ingredient_id}'
