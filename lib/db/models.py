@@ -37,7 +37,7 @@ class Ingredient(Base):
 
 class RecipeIngredient(Base):
     __tablename__ = 'recipe_ingredients'
-
+    
     id = Column(Integer(), primary_key=True)
     quantity = Column(Float())
     unit = Column(String())
