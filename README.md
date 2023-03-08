@@ -17,6 +17,15 @@ Then, from the same directory, run:
 ```
 $ pipenv shell
 ```
+Then, again from the same directory, run:
+```
+pip install playsound
+```
+Then, again from the same directory, run:
+```
+pip3 install pyobjc
+```
+
 
 To run the application, navigate to the "lib" directory and run:
 ```
