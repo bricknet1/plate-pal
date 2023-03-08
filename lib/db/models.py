@@ -13,15 +13,14 @@ class Recipe(Base):
     instructions = Column(String())
 
     recipe_ingredients = relationship('RecipeIngredient', backref=backref('recipe'))
-    # ingredients = relationship('Ingredient')
-
-    # recipe_ingredients = Column(Integer(), ForeignKey('recipes.id'))
 
     def __repr__(self):
         return f'id: {self.id}, ' + \
             f'name: {self.name}, ' + \
             f'ingredients: {self.recipe_ingredients}, ' + \
-            f'instructions: {self.instructions}, '
+            f'instructions: {self.instructions}'
+
+    
 
 
 class Ingredient(Base):

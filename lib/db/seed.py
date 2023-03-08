@@ -77,20 +77,6 @@ if __name__ == '__main__':
     session.add(recipe5)
     session.commit()
 
-    # recipe_list = ["Spaghetti Carbonara", "Spaghetti with Tomato Sauce and Meatballs", "Penne with Tomato Sauce and Mozzarella", "Garlic Shrimp Linguine", "Creamy Mushroom Pasta"]
-
-    # for rec in recipe_list:
-    #     all_recs = Recipe(name=f"{rec}")
-    #     session.add(all_recs)
-    #     session.commit()
-
-    # instructions_list = ["instructions go here", "and here", "and also here"]
-
-    # for instruc in instructions_list:
-    #     all_instructions = Recipe(instructions=f"{instruc}")
-    #     session.add(all_instructions)
-    #     session.commit()
-
     ingredients_list = ['Spaghetti','Penne','Fettuccine','Macaroni','Linguine','Tomatoes','Garlic','Olive oil','Parmesan cheese','Basil','Mozzarella cheese','Onions','Oregano','Salt','Black pepper','Red pepper flakes','Ground beef','Chicken','Shrimp','Lemon','Spinach','Ricotta cheese','Mushrooms','Bell peppers','Zucchini','Eggplant','Butter','Cream','Anchovies']
 
     for ing in ingredients_list:
