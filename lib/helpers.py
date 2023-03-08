@@ -30,6 +30,10 @@ def create_recipe_table(session, recipes):
     recipe_ids = []
     for obj in recipe_objects:
         recipe_ids.append(obj.recipe_id)
+    if len(recipe_ids) == 0:
+        print("Sorry, there are no recipes at this thyme. Please try adding other ingredients.")
+        print('~' * 50)
+        add_ingredient(session)
 
     for recipe in recipes:
         id_spaces = 4 - len(str(recipe.id))
@@ -46,7 +50,16 @@ def add_ingredient(session):
     ingredient_item_id = input('Please enter in an ingredient ID: ')
     while ingredient_item_id:
         selected_ingredients_list.append(ingredient_item_id)
-        print(selected_ingredients_list)
+        ingredients = session.query(Ingredient)
+        print('-' * 50)
+        print("Ingredients you've selected")
+        print('-' * 50)
+
+        for ingredient in ingredients:
+            if str(ingredient.id) in selected_ingredients_list:
+                print(f'•{ingredient.name}')
+        print('-' * 50)
+        # print(selected_ingredients_list)
         yes_no = None
         while yes_no not in YES + NO:
             yes_no = input('Would you like to add another ingredient? (Y/N) ')
@@ -63,5 +76,29 @@ def choose_recipe(session):
     recipes = session.query(Recipe)
     for recipe in recipes:
         if recipe.id == int(recipe_item_id):
+
+            print('~' * 50)
             print(f"How to prepare {recipe.name}")
             print(recipe.instructions)
+            print('~' * 50)
+        
+    recipe_list_loop = input('Would you like to see the recipe list again? (Y/N) ')
+    if recipe_list_loop.lower() in NO:
+        print('''   
+  ____                                    ?~~bL
+  z@~ b     Goodbite, have a nice dish!    |  `U,
+ ]@[  |                                   ]'  z@'
+ d@~' `|, .__     _----L___----, __, .  _t'   `@j
+`@L_,   "-~ `--"~-a,           `C.  ~""O_    ._`@
+ q@~'   ]P       ]@[            `Y=,   `H+z_  `a@
+ `@L  _z@        d@               Ya     `-@b,_a'
+  `-@d@a'       )@[               `VL      `a@@'
+    aa~'   ],  .a@'                qqL  ), ./~
+    @@_  _z~  _d@[                 .V@  .L_d'
+     "~@@@'  ]@@@'        __      )@n@bza@-"
+       `-@zzz@@@L        )@@z     ]@@=%-"
+         "~~@@@@@bz_    _a@@@@z___a@K
+             "~-@@@@@@@@@@@@@@@@@@~" 
+                `~~~-@~~-@@~~~~~' ''')
+    else:
+        create_recipe_table(session, recipes)
