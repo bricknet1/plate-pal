@@ -94,6 +94,10 @@ def choose_recipe(session):
        `-@zzz@@@L        )@@z     ]@@=%-"
          "~~@@@@@bz_    _a@@@@z___a@K
              "~-@@@@@@@@@@@@@@@@@@~" 
-                `~~~-@~~-@@~~~~~' ''')
+                `~~~-@~~-@@~~~~~' 
+
+        Presented by the The Plate Mates™
+        
+        ''')
     else:
         create_recipe_table(session, recipes)
