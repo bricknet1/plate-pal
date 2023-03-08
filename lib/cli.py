@@ -1,3 +1,4 @@
+from playsound import playsound
 from db.models import Ingredient
 from db.models import RecipeIngredient
 from db.models import Recipe
@@ -14,6 +15,7 @@ session = Session()
 
 
 if __name__ == '__main__':
+    playsound('music.mp3', False)
     print('''
  ________    __         ________    ________   ________
 |    _   \  |  |       /    _   \  |__    __| |   _____|
