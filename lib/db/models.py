@@ -21,7 +21,7 @@ class Recipe(Base):
         return f'id: {self.id}, ' + \
             f'name: {self.name}, ' + \
             f'ingredients: {self.recipe_ingredients}, ' + \
-            f'instructions: {self.instructions}'
+            f'instructions: {self.instructions}, '
 
 
 class Ingredient(Base):

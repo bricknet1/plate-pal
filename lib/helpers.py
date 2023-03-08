@@ -63,4 +63,5 @@ def choose_recipe(session):
     recipes = session.query(Recipe)
     for recipe in recipes:
         if recipe.id == int(recipe_item_id):
-            print(recipe.name)
+            print(f"How to prepare {recipe.name}")
+            print(recipe.instructions)
