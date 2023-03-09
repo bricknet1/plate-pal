@@ -15,7 +15,9 @@ session = Session()
 
 
 if __name__ == '__main__':
-    playsound('music.mp3', False)
+    playsound('backgroundmusic.mp3', False)
+    playsound('ambience.mp3', False)
+
     print('''
  ________    __         ________    ________   ________
 |    _   \  |  |       /    _   \  |__    __| |   _____|

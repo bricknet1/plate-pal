@@ -1,6 +1,7 @@
 from db.models import Ingredient
 from db.models import Recipe
 from db.models import RecipeIngredient
+from playsound import playsound
 
 YES = ['y', 'ye', 'yes']
 NO = ['n', 'no']
@@ -37,6 +38,7 @@ def create_recipe_table(session, recipes):
         name_spaces = 43 - len(recipe.name)
         if recipe.id in recipe_ids:
             print(f'|{recipe.id}{" " * id_spaces}|{recipe.name}{" " * name_spaces}|')
+    playsound('recipes.mp3')
     print('-' * 50)
 
     choose_recipe(session)
@@ -44,12 +46,14 @@ def create_recipe_table(session, recipes):
 
 def add_ingredient(session):
     ingredient_item_id = input('Please enter in an ingredient ID: ')
+    playsound('add.mp3')
     while ingredient_item_id:
         selected_ingredients_list.append(ingredient_item_id)
         ingredients = session.query(Ingredient)
         print('-' * 50)
         print("Ingredients you've selected")
         print('-' * 50)
+        playsound('recipes.mp3')
 
         for ingredient in ingredients:
             if str(ingredient.id) in selected_ingredients_list:
@@ -58,9 +62,13 @@ def add_ingredient(session):
         yes_no = None
         while yes_no not in YES + NO:
             yes_no = input('Would you like to add another ingredient? (Y/N) ')
+            playsound('add.mp3')
             if yes_no.lower() in YES:
                 ingredient_item_id = input('Please enter the ID of your next ingredient: ')
+                playsound('recipes.mp3')
+                
             elif yes_no.lower() in NO:
+                playsound('recipes.mp3')
                 ingredient_item_id = None
                 recipes = session.query(Recipe)
                 create_recipe_table(session, recipes)
@@ -68,6 +76,7 @@ def add_ingredient(session):
 
 def choose_recipe(session):
     recipe_item_id = input('Please enter in a recipe ID: ')
+    playsound('add.mp3')
     recipes = session.query(Recipe)
     for recipe in recipes:
         if recipe.id == int(recipe_item_id):
@@ -76,9 +85,11 @@ def choose_recipe(session):
             print(f"How to prepare {recipe.name}")
             print(recipe.instructions)
             print('~' * 50)
+            playsound('recipes.mp3')
         
     recipe_list_loop = input('Would you like to see the recipe list again? (Y/N) ')
     if recipe_list_loop.lower() in NO:
+        playsound('add.mp3')
         print('''   
   ____                                    ?~~bL
   z@~ b     Goodbite, have a nice dish!    |  `U,
@@ -99,5 +110,6 @@ def choose_recipe(session):
         Presented by the The Plate Mates™
         
         ''')
+        playsound('goodbite.mp3')
     else:
         create_recipe_table(session, recipes)
